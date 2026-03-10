@@ -26,7 +26,7 @@ const task = database.define("task", {
         }
     },
     status: {
-        type: sequalize.STRING,
+        type: sequalize.ENUM("pending", "in_progress", "completed"),
         allowNull: false,
         defaultValue: "pending"
     }
