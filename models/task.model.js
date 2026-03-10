@@ -9,11 +9,21 @@ const task = database.define("task", {
     },
     title: {
         type: sequalize.STRING,
-        allowNull: false
+        allowNull: true,
+        validate: {
+            notEmpty: {
+                msg: "Title cannot be empty"
+            }
+        }
     },
     description: {
         type: sequalize.STRING,
-        allowNull: false
+        allowNull: true,
+        validate: {
+            notEmpty: {
+                msg: "Description cannot be empty"
+            }
+        }
     },
     status: {
         type: sequalize.STRING,

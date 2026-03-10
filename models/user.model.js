@@ -9,15 +9,34 @@ const user = database.define("user", {
     },
     name: {
         type: sequalize.STRING,
-        allowNull: false
+        allowNull: true,
+        alidate: {
+            notEmpty: {
+                msg: "Name cannot be empty"
+            }
+        }
     },
     email: {
         type: sequalize.STRING,
-        allowNull: false
+        allowNull: true,
+        validate: {
+            notEmpty: {
+                msg: "Email cannot be empty"
+            }
+        }
     },
     password: {
         type: sequalize.STRING,
-        allowNull: false
+        allowNull: true,
+        validate: {
+            notEmpty: {
+                msg: "Password cannot be empty"
+            },
+            len: {
+                args: [6, 20],
+                msg: "Password must be between 6 and 20 characters long"
+            }
+        }
     }
 },
     {
